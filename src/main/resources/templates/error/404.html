@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>404</title>
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/style/style.css}" />
+</head>
+
+<body class="body-form">
+    <a th:onclick="'window.location.href = \'' + @{/api/v1/tasks} + '\''" class="a-main">Главная страница</a>
+
+    <h1>404</h1>
+    <h2>Страница не найдена!</h2>
+
+    <button th:onclick="'window.location.href = \'' + @{/api/v1/tasks} + '\''" class="bttn bttn-or" style="width: 25%; ">Вернуться на главную</button>
+</body>
+</html>

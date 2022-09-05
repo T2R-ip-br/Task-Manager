@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="task (task)">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title th:text="${task.nameTask}"></title>
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/style/style.css}" />
+</head>
+
+<body>
+
+    <div class="div-back list-info-tree">
+        <h1>Просмотр задач:</h1>
+
+        <div th:utext="${taskTree}" class="div-tree"></div>
+
+        <button th:onclick="'window.location.href = \'' + @{/api/v1/task} + '\''" class="bttn bttn-or">Добавить задачу</button>
+        <button th:onclick="'window.location.href = \'' + @{/api/v1/tasks} + '\''" class="bttn bttn-bl">На главную</button>
+    </div>
+
+    <div class="div-back list-info">
+
+        <h1><span th:text="${task.nameTask}"></span></h1>
+        <hr style="margin: 45px 0;">
+
+        <h4>Статус задачи: <span th:text="${task.status.nameStatus}"></span></h4>
+
+        <div class="div-status">
+            <form method="POST" th:action="@{/api/v1/task/update-status/{id}(id=${task.id})}" th:object="${task}">
+                <select th:field="*{status}" style="margin-bottom: 30px;">
+                    <option th:each="status : ${statuses}" th:value="${status.id}" th:text="${status.nameStatus}"></option>
+                </select>
+
+                <input type="submit" value="изменить" class="bttn bttn-bl" style="margin-top: 0px;"> <br>
+            </form>
+
+            <!-- Блок отображения ошибки -->
+            <div class="div-error" th:if="${(param.error != null)}">
+                <p th:text="${param.error}"></p>
+            </div>
+
+        </div>
+
+        <hr>
+        <h4>Описание задачи:</h4>
+        <pre th:text="${task.description}"></pre>
+        <hr>
+        <h4>Список исполнителей:</h4>
+        <p th:text="${task.listOfPerformers}"></p>
+        <hr>
+        <h4>Дата регистрации задачи:</h4>
+        <p th:text="${task.dateOfRegistration}"></p>
+        <hr>
+        <h4>Плановая трудоёмкость задачи:</h4>
+        <p th:text="${task.plannedComplexity}"></p>
+        <hr>
+
+        <!-- Отображается когда задача примет статус: Завершена -->
+        <div th:if="${task.actualExecutionTime != null}">
+            <h4>Фактическое время выполнения задачи:</h4>
+            <p th:text="${task.actualExecutionTime}"></p>
+            <hr>
+            <h4>Дата завершения задачи:</h4>
+            <p th:text="${task.dateOfCompletion}"></p>
+            <hr>
+        </div>
+
+        <div>
+            <h4>Подзадачи:</h4>
+            <table>
+                <tr th:each="subtask : ${subtasks}">
+                    <td th:text="${subtask.nameTask}" th:onclick="'window.location.href = \'' + @{/api/v1/task/{id}(id=${subtask.id})} + '\''" style="cursor:pointer;" align="left">вфыаыва</td>
+                    <td th:if="${subtask.plannedComplexity != null}" th:onclick="'window.location.href = \'' + @{/api/v1/task/{id}(id=${subtask.id})} + '\''" style="cursor:pointer;" align="left">, Плановая трудоёмкость:</td>
+                    <td th:text="${subtask.plannedComplexity}" th:if="${subtask.plannedComplexity != null}" th:onclick="'window.location.href = \'' + @{/api/v1/task/{id}(id=${subtask.id})} + '\''" style="cursor:pointer;" align="left"></td>
+                    <td th:if="${subtask.actualExecutionTime != null}" th:onclick="'window.location.href = \'' + @{/api/v1/task/{id}(id=${subtask.id})} + '\''" style="cursor:pointer;" align="left">, Время выполнения:</td>
+                    <td th:text="${subtask.actualExecutionTime}" th:if="${subtask.actualExecutionTime != null}" th:onclick="'window.location.href = \'' + @{/api/v1/task/{id}(id=${subtask.id})} + '\''" style="cursor:pointer;" align="left"></td>
+                    <td th:onclick="'window.location.href = \'' + @{/api/v1/task/{id}(id=${subtask.id})} + '\''" style="cursor:pointer;" align="left">, Статус задачи:</td>
+                    <td th:text="${subtask.status.nameStatus}" th:onclick="'window.location.href = \'' + @{/api/v1/task/{id}(id=${subtask.id})} + '\''" style="cursor:pointer;" align="left"></td>
+                </tr>
+            </table>
+        </div>
+
+        <br><br>
+
+        <div>
+            <button th:onclick="'window.location.href = \'' + @{/api/v1/subtask/{id}(id=${task.id})} + '\''" class="bttn bttn-or">Добавить подзадачу</button>
+            <button th:onclick="'window.location.href = \'' + @{/api/v1/task/update/{id}(id=${task.id})} + '\''" class="bttn bttn-bl">Изменить задачу</button>
+            <button th:onclick="'window.location.href = \'' + @{/api/v1/task/delete/{id}(id=${task.id})} + '\''" class="bttn bttn-x">Удалить задачу</button>
+        </div>
+    </div>
+</body>
+</html>

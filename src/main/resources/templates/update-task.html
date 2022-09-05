@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Изменение задачи</title>
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/style/style.css}" />
+</head>
+
+<body class="body-form">
+    <a th:onclick="'window.location.href = \'' + @{/api/v1/tasks} + '\''" class="a-main">Главная страница</a>
+
+    <div>
+        <h1>Изменение задачи</h1>
+
+        <form method="POST" th:action="@{/api/v1/task/update/{id}(id=${task.id})}" th:object="${task}">
+
+            <input id="nameTask" placeholder="Наименование задачи" required type="text" th:field="*{nameTask}"/> <br><br>
+            <textarea id="description" placeholder="Описание задачи" required type="text" th:field="*{description}"/> <br><br>
+            <input id="listOfPerformers" placeholder="Список исполнителей" required type="text" th:field="*{listOfPerformers}"/> <br><br>
+            <input id="plannedComplexity" placeholder="Плановая трудоёмкость задачи" required type="text" th:field="*{plannedComplexity}"/> <br><br>
+
+            <select th:field="*{status}" style="margin-top: 25px;">
+                <option th:each="status : ${statuses}" th:value="${status.id}" th:text="${status.nameStatus}"></option>
+            </select> <br><br>
+
+            <!-- Блок отображения ошибки -->
+            <div class="div-error" th:if="${(param.error != null)}" style="width: 50%; margin: 0 auto;">
+                <p th:text="${param.error}"></p>
+            </div>
+
+            <input id="actualExecutionTime" th:if="${task.actualExecutionTime != null}" type="hidden" th:field="*{actualExecutionTime}">
+            <input id="linkTask" th:if="${task.linkTask != null}" type="hidden" th:field="*{linkTask}">
+
+            <input type="submit" value="Изменить" class="bttn bttn-bl"> <br>
+        </form>
+    </div>
+</body>
+</html>

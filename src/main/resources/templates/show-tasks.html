@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Просмотр задач</title>
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/style/style.css}" />
+</head>
+
+<body>
+    <div class="div-back">
+        <h1>Просмотр задач:</h1>
+
+        <!-- Дерево генерируется автоматически при запросе -->
+        <div th:utext="${taskTree}" class="div-tree"></div>
+
+        <button th:onclick="'window.location.href = \'' + @{/api/v1/task} + '\''" class="bttn bttn-or">Добавить задачу</button>
+    </div>
+</body>
+</html>

@@ -1,0 +1,224 @@
+body {
+    background: #2f89ea;
+    font-family: roboto !important;
+    text-align: center;
+    color: #3A3A3A;
+}
+
+form {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+select {
+    height: 50px !important;
+    border-radius: 25px !important;
+    font-family: Arial, Verdana, sans-serif;
+    padding: 10px;
+    width: 25%;
+}
+
+input{
+    margin-top: 25px;
+    height: 30px;
+    border-radius: 25px !important;
+    font-family: Arial, Verdana, sans-serif;
+    border-width: 0;
+    padding: 10px;
+    width: 25%;
+}
+
+textarea{
+    margin-top: 25px;
+    min-height: 45px !important;
+    min-width: 25%;
+    border-radius: 15px !important;
+    border-width: 0;
+    padding: 10px;
+    font-family: Arial, Verdana, sans-serif;
+    width: 25%;
+}
+
+p {
+    font-family: Arial, Verdana, sans-serif;
+}
+
+pre {
+    font-family: Arial, Verdana, sans-serif;
+    text-align: left;
+    white-space: pre-wrap;       /* css-3 */
+    white-space: -moz-pre-wrap;  /* Mozilla, с 1999 */
+    white-space: -pre-wrap;      /* Opera 4-6 */
+    white-space: -o-pre-wrap;    /* Opera 7 */
+    word-wrap: break-word;       /* Internet Explorer 5.5+ поддерживается в IE, Safari, и Firefox 3.1.*/
+}
+
+span {
+    font-family: Arial, Verdana, sans-serif;
+}
+
+h1 {
+  font-family: Arial, Verdana, sans-serif;
+  margin-top: 25px;
+}
+
+h2 {
+  font-family: Arial, Verdana, sans-serif;
+}
+
+h3 {
+    font-family: Arial, Verdana, sans-serif;
+}
+
+h4 {
+    font-family: Arial, Verdana, sans-serif;
+}
+
+a {
+    color: #3A3A3A;
+    text-decoration: none;
+}
+
+td {
+    font-family: Arial, Verdana, sans-serif;
+}
+
+.body-form {
+    padding-top: 50px;
+}
+
+.bttn {
+    cursor:pointer;
+    margin: 0 5px;
+    display: inline-block;
+    font-weight: 400;
+    height: 50px;
+    color: #212529 !important;
+    text-align: center;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-color: transparent;
+    border: 1px solid transparent;
+    padding: .375rem 25px;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: 25px;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+/* Ораньжевая кнопка */
+.bttn-or {
+    margin-top: 25px;
+    color: #fff !important;
+    background-color: #ff4f12;
+    border-color: #ff4f12;
+}
+
+/* Синяя кнопка */
+.bttn-bl {
+    margin-top: 25px;
+    color: #fff !important;
+    background-color: #7700ff;
+    border-color: #7700ff;
+}
+
+/* Серая кнопка, используется для удаления */
+.bttn-x {
+    margin-top: 25px;
+    color: #fff !important;
+    background-color: #313a49;
+}
+
+/* Основной блок являющийся фоном для контента */
+.div-back {
+        min-height: 50px;
+        background: #ffffff;
+        margin-left: 25px;
+        margin-right: 25px;
+        margin-bottom: 25px;
+        margin-top: 33px;
+        border-radius: 20px;
+        padding: 20px 15px 25px 15px;
+}
+
+/* Блок для отображения ошибок */
+.div-error {
+    background-color: #e60002;
+    padding: 5px;
+    border-radius: 25px;
+    color: #fff;
+}
+
+/* Ссылка на главную страницу */
+.a-main {
+    float: left;
+    cursor: pointer;
+    margin: -25px 45px;
+    text-decoration: underline;
+    font-family: arial;
+}
+
+/* Блок отображения информации о задаче */
+.list-info {
+    width: 57%;
+    float: left;
+    padding: 20px 50px 50px 50px;
+}
+
+/* Блок отображения дерева задач на странице инф. о задаче */
+.list-info-tree {
+    width: 30%;
+    float: left;
+}
+
+/* Блок отображения дерева задач */
+.div-tree {
+    text-align: left;
+    padding-top: 15px;
+    padding-left: 15px;
+    margin-bottom: 35px;
+}
+
+/* Настройки отображения дерева задач */
+ul {
+    margin-top: 10px;
+}
+
+.treeCSS,
+.treeCSS ul,
+.treeCSS li {
+    font-family: Arial, Verdana, sans-serif;
+    margin-top: 10px;
+    margin: 0;
+    padding: 0;
+    line-height: 1.5;
+    list-style: none;
+}
+.treeCSS ul {
+    margin: 0 0 0 1em; /* вести линию вниз где-то с полбуквы родителя */
+}
+.treeCSS > li:not(:only-child),
+.treeCSS li li {
+    position: relative;
+    padding: .2em 0 0 1.2em; /* отступ до текста; для раскрывающегося списка в ряде случаев (в Хроме есть баг) padding-top (.2em) лучше указывать в px */
+}
+.treeCSS li:not(:last-child) {
+    border-left: 1px solid #3A3A3A; /* толщина, цвет и стиль (вместо сплошной пунктирная или точечная) вертикальной линии */
+}
+.treeCSS li li:before,
+.treeCSS > li:not(:only-child):before { /* горизонтальная линия */
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1.1em; /* не более отступа до текста (1.2em) */
+    height: 0.9em; /* начинается приблизительно с половины высоты буквы (.5em + .2em) */
+    border-bottom: 1px solid #3A3A3A;
+}
+.treeCSS li:last-child:before { /* вертикальная линия последнего пункта в каждом списке */
+    width: calc(1.1em - 1px); /* для перфекционистов */
+    border-left: 1px solid #3A3A3A;
+}

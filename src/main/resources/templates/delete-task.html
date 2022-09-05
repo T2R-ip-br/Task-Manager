@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <title>Удаление задачи</title>
+  <link rel="stylesheet" type="text/css" media="all" th:href="@{/style/style.css}" />
+</head>
+
+<body class="body-form">
+    <a th:onclick="'window.location.href = \'' + @{/api/v1/tasks} + '\''" class="a-main">Главная страница</a>
+
+    <h1>Вы действительно хотите удалить задачу:</h1>
+    <h2>"<span th:text="${task.nameTask}"></span>"?</h2>
+
+    <!-- Блок отображения ошибки -->
+    <div class="div-error" th:if="${(param.error != null)}" style="width: 50%; margin: 0 auto;">
+      <p th:text="${param.error}"></p>
+    </div>
+
+    <form th:action="@{/api/v1/task/delete/{id}(id=${task.id})}" method="post">
+      <input type="submit" value="Удалить" class="bttn bttn-x">
+    </form>
+
+    <button th:onclick="'window.location.href = \'' + @{/api/v1/task/{id}(id=${task.id})} + '\''" class="bttn bttn-or" style="width: 25%;">Отмена</button>
+</body>
+</html>

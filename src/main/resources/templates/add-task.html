@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Добавление задачи</title>
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/style/style.css}" />
+</head>
+
+<body class="body-form">
+    <a th:onclick="'window.location.href = \'' + @{/api/v1/tasks} + '\''" class="a-main">Главная страница</a>
+
+    <div>
+        <h1>Добавление задачи</h1>
+        <form method="POST" th:action="@{/api/v1/task}" th:object="${task}">
+            <input id="nameTask" placeholder="Наименование задачи" required type="text" th:field="*{nameTask}"/> <br><br>
+            <textarea id="description" placeholder="Описание задачи" required type="text" th:field="*{description}"/> <br><br>
+            <input id="listOfPerformers" placeholder="Список исполнителей" required type="text" th:field="*{listOfPerformers}"/> <br><br>
+            <input id="plannedComplexity" placeholder="Плановая трудоёмкость задачи" required type="number" th:field="*{plannedComplexity}"/> <br><br>
+            <input id="linkTask" th:if="${task.linkTask != null}" type="hidden" th:field="*{linkTask}">
+            <input type="submit" class="bttn bttn-or" value="Добавить"> <br>
+        </form>
+    </div>
+</body>
+</html>
